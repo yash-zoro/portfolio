@@ -1,14 +1,11 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ["./src/**/*.{astro,html,js,jsx,ts,tsx}"],
-  darkMode: 'class',
+import { defineConfig } from 'tailwindcss';
+
+export default defineConfig({
   theme: {
     extend: {
-      colors: {
-        neon: '#39ff14',
+      fontFamily: {
+        sans: ['"Josefin Sans"', 'sans-serif'], // Set Josefin Sans as the default sans-serif font
       },
     },
   },
-  plugins: [],
-};
-
+});
