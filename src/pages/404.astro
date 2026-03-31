@@ -1,0 +1,15 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="404 — Not Found">
+  <section class="flex flex-col items-center justify-center text-center px-4 py-24 sm:py-32">
+    <h1 class="text-6xl sm:text-7xl font-extrabold text-neon animate-in">404</h1>
+    <p class="mt-4 text-lg text-gray-400 animate-in" style="animation-delay: 0.15s;">
+      This page doesn't exist.
+    </p>
+    <a href="/" class="mt-8 px-5 py-2.5 bg-neon text-black font-semibold rounded-md hover:opacity-80 transition-opacity text-sm animate-in" style="animation-delay: 0.3s;">
+      Back to Home
+    </a>
+  </section>
+</BaseLayout>

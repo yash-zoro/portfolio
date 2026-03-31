@@ -3,12 +3,20 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout>
-  <section class="text-center px-4 py-12 sm:py-16 md:py-20">
-    <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-neon leading-snug sm:leading-tight">
-      Hey, I'm Yash,
+  <section class="flex flex-col items-center justify-center text-center px-4 py-20 sm:py-28 md:py-36 -mx-4 md:-mx-8">
+    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-snug sm:leading-tight animate-in">
+      Hey, I'm <span class="text-neon">Yash</span>,
     </h1>
-    <p class="mt-3 text-sm sm:text-base md:text-lg text-gray-300 max-w-sm sm:max-w-md mx-auto">
+    <p class="mt-4 text-base sm:text-lg md:text-xl text-gray-400 max-w-md sm:max-w-lg animate-in" style="animation-delay: 0.15s;">
       Geek by day, Gamer by night. Always leveling up in life.
     </p>
+    <div class="mt-8 flex gap-4 animate-in" style="animation-delay: 0.3s;">
+      <a href="/about" class="px-5 py-2.5 bg-neon text-black font-semibold rounded-md hover:opacity-80 transition-opacity text-sm">
+        About Me
+      </a>
+      <a href="/contact" class="px-5 py-2.5 border border-gray-600 text-gray-300 rounded-md hover:border-neon hover:text-neon transition-all text-sm">
+        Get in Touch
+      </a>
+    </div>
   </section>
 </BaseLayout>
