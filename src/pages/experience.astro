@@ -1,21 +1,52 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import experience from '../data/experience.json';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import experience from "../data/experience.json";
 ---
 
-<BaseLayout title="Experience">
-  <section class="px-4 sm:px-6 py-16 text-white">
-    <h1 class="text-3xl sm:text-4xl font-bold mb-10">Experience</h1>
+<BaseLayout title="Experience — Yash Kant">
+  <section class="px-0 py-16 text-ink">
+    <p class="mono-label">// career</p>
+    <h1 class="mt-2 text-3xl sm:text-4xl font-bold tracking-tight">Experience</h1>
 
-    <div class="space-y-10 stagger-in">
+    <div class="mt-12 space-y-14">
       {experience.map((job) => (
-        <div class="border-l-4 border-neon pl-5 py-1 hover:bg-white/[0.02] rounded-r-lg transition-all duration-300">
-          <h2 class="text-xl font-semibold">{job.title} <span class="text-gray-400 font-normal">@ {job.company}</span></h2>
-          <div class="flex flex-wrap gap-x-4 mt-1">
-            <p class="text-sm text-gray-500">{job.location}</p>
-            <p class="text-sm text-gray-500">{job.start} – {job.end}</p>
+        <div class="relative pl-6 sm:pl-8 border-l border-line reveal">
+          <span class="absolute -left-[6px] top-1.5 w-3 h-3 rounded-full bg-em ring-4 ring-ground"></span>
+
+          <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+            <h2 class="text-xl font-semibold text-ink">
+              {job.title}
+              {job.current && (
+                <span class="ml-2 align-middle inline-flex items-center gap-1.5 rounded-full border border-em/40 bg-em/10 px-2 py-0.5 text-[11px] font-mono font-medium text-em">
+                  <span class="w-1.5 h-1.5 rounded-full bg-em"></span>current
+                </span>
+              )}
+            </h2>
+            <span class="font-mono text-xs text-mut whitespace-nowrap">{job.start} &ndash; {job.end}</span>
           </div>
-          {job.description && <p class="mt-3 text-gray-300 leading-relaxed">{job.description}</p>}
+
+          <p class="mt-1 text-sm text-em">{job.company}</p>
+          <p class="font-mono text-xs text-mut">{job.location}</p>
+
+          {job.summary && <p class="mt-4 text-ink/80 leading-relaxed max-w-3xl">{job.summary}</p>}
+
+          <div class="mt-5 space-y-5">
+            {job.groups.map((group) => (
+              <div>
+                {group.label && (
+                  <p class="mono-label text-em/90 mb-2">{group.label}</p>
+                )}
+                <ul class="space-y-2.5 max-w-3xl">
+                  {group.points.map((point) => (
+                    <li class="flex gap-3 text-sm text-ink/75 leading-relaxed">
+                      <span class="text-em/70 mt-1 shrink-0" aria-hidden="true">&#9656;</span>
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       ))}
     </div>

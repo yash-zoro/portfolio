@@ -3,13 +3,16 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="404 — Not Found">
-  <section class="flex flex-col items-center justify-center text-center px-4 py-24 sm:py-32">
-    <h1 class="text-6xl sm:text-7xl font-extrabold text-neon animate-in">404</h1>
-    <p class="mt-4 text-lg text-gray-400 animate-in" style="animation-delay: 0.15s;">
-      This page doesn't exist.
+  <section class="flex flex-col items-center justify-center text-center py-28 sm:py-36">
+    <p class="mono-label animate-in"><span class="text-em">$</span> cat /page</p>
+    <h1 class="mt-4 text-6xl sm:text-8xl font-extrabold tracking-tight animate-in" style="animation-delay:.1s">
+      4<span class="text-gradient">0</span>4
+    </h1>
+    <p class="mt-4 font-mono text-sm text-mut animate-in" style="animation-delay:.2s">
+      No such file or directory.
     </p>
-    <a href="/" class="mt-8 px-5 py-2.5 bg-neon text-black font-semibold rounded-md hover:opacity-80 transition-opacity text-sm animate-in" style="animation-delay: 0.3s;">
-      Back to Home
+    <a href="/" class="mt-9 px-5 py-2.5 bg-em text-[#05130d] font-semibold rounded-lg text-sm hover:opacity-90 transition-opacity animate-in" style="animation-delay:.3s">
+      &larr; Back home
     </a>
   </section>
 </BaseLayout>

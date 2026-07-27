@@ -8,15 +8,43 @@ interface Props {
   description?: string;
 }
 
-const { title = "Yash Kant", description = "Yash Kant — Security Engineer specializing in DLP, endpoint security, and cloud defense." } = Astro.props;
+const {
+  title = "Yash Kant — Security Engineer",
+  description = "Yash Kant — Security engineer defending enterprise fleets across endpoint, CASB, and SIEM. Endpoint security, detection engineering, incident response, and insider-threat investigation at fleet scale.",
+} = Astro.props;
+
 const canonicalURL = new URL(Astro.url.pathname, "https://yashkant.com");
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Yash Kant",
+  jobTitle: "Security Engineer",
+  url: "https://yashkant.com",
+  email: "mailto:yashkant1125@gmail.com",
+  address: { "@type": "PostalAddress", addressLocality: "Gurugram", addressCountry: "IN" },
+  sameAs: [
+    "https://www.linkedin.com/in/yash-2511-kant/",
+    "https://x.com/zorrrrrroooooo",
+  ],
+  knowsAbout: [
+    "Endpoint Security",
+    "Detection Engineering",
+    "SOC Automation",
+    "Incident Response",
+    "Insider-Threat Investigation",
+    "Netskope SSE / CASB / DLP",
+    "Microsoft Defender & Sentinel (KQL)",
+  ],
+};
 ---
 
-<html lang="en" class="dark scroll-smooth">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#0a0e0d" />
     <link rel="canonical" href={canonicalURL.href} />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
@@ -34,12 +62,35 @@ const canonicalURL = new URL(Astro.url.pathname, "https://yashkant.com");
     <meta name="twitter:creator" content="@zorrrrrroooooo" />
 
     <title>{title}</title>
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
   </head>
-  <body class="bg-black text-white font-sans">
+  <body class="min-h-screen flex flex-col">
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="bg-orb bg-orb-a" aria-hidden="true"></div>
+    <div class="bg-orb bg-orb-b" aria-hidden="true"></div>
+
     <Navbar />
-    <main class="p-4 md:p-8 max-w-4xl mx-auto animate-in">
+    <main class="flex-1 w-full max-w-5xl mx-auto px-5 sm:px-6 md:px-8">
       <slot />
     </main>
     <Footer />
+
+    <script>
+      const els = document.querySelectorAll<HTMLElement>(".reveal");
+      if (els.length) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("in");
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+        );
+        els.forEach((el) => io.observe(el));
+      }
+    </script>
   </body>
 </html>

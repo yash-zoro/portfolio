@@ -1,0 +1,77 @@
+[
+  {
+    "name": "Defender Analysis Engine",
+    "tagline": "Autonomous SOC analyst for Microsoft Defender for Endpoint",
+    "domain": "Endpoint Detection & Response · SOC automation · Threat hunting",
+    "description": "An autonomous-but-advisory SOC analyst that automates the full alert lifecycle — pulling alerts, grouping them into incidents, running multi-query KQL investigations, correlating behaviour across the MITRE ATT&CK kill chain, and emitting prioritized verdicts with the evidence behind them. It doesn't just suggest a query — it runs it, so a verdict can say “three other devices show this same indicator” instead of “you should go check.”",
+    "highlights": [
+      "Resolves any identifier — hostname, device ID, user email, serial, or IOC — to a device and answers six core investigation questions in ~15–20 seconds.",
+      "Dual-mode analyst brain: verdicts come from a deterministic rule engine or from LLM reasoning over a structured evidence package, so it runs with or without an AI budget.",
+      "Runs unattended in the cloud — containerized on AWS ECS Fargate, triggered every six hours, posting incident reports to Slack for roughly $5–8 a month."
+    ],
+    "stack": ["Python", "Defender for Endpoint (KQL)", "Azure AD / Graph", "Anthropic Claude API", "AWS Fargate", "Docker"],
+    "scale": "~18,900 LOC · 75 modules · cloud-deployed",
+    "principle": "Read-only by design",
+    "featured": true
+  },
+  {
+    "name": "MDE Fleet Remediation Toolkit",
+    "tagline": "Guardrailed endpoint remediation at fleet scale",
+    "domain": "Endpoint remediation · Live Response automation · Windows security",
+    "description": "Detection is only half the job — risky software (bandwidth-resale proxyware, consumer VPNs, unauthorized AI code editors) has to actually be removed from live endpoints, safely and at scale. This write-capable toolkit does exactly that through Defender Live Response, deliberately isolated into its own sandbox so an automation bug can never reach the read-only production tooling.",
+    "highlights": [
+      "Two load-bearing safety invariants on every write: a hard allowlist (a device not on the list is refused) and dry-run-by-default (nothing dispatches without explicit confirmation).",
+      "CLM-safe PowerShell removers written cmdlet-only so they survive WDAC / Constrained Language Mode, which breaks naïve remediation scripts.",
+      "KQL-driven targeting separates “installed” from “actively relaying” using live network telemetry; every campaign leaves a timestamped, per-device audit trail."
+    ],
+    "stack": ["Python", "PowerShell", "Defender Live Response", "Microsoft Graph / Intune", "Azure CLI"],
+    "scale": "~6,300 LOC + 13 PowerShell payloads · hundreds of devices per campaign",
+    "principle": "Write sandbox · allowlist + dry-run",
+    "featured": true
+  },
+  {
+    "name": "Netskope Investigation Agent",
+    "tagline": "Read-only CASB / SWG / DLP investigation over the live tenant",
+    "domain": "CASB · Secure Web Gateway · DLP · shadow-IT discovery",
+    "description": "Netskope's telemetry is rich but sprawling — hundreds of API paths. This agent distills it into nine focused investigation lenses over the live tenant (or offline exports), normalizing everything to a common schema so a SOC question like “what did this user touch” or “hunt this IP everywhere” is one command away. Read-only by construction — the API client exposes no write, patch, or delete methods at all.",
+    "highlights": [
+      "Nine lenses: summary, traffic, DLP, threats, shadow-IT, steering, hunt, user, and device.",
+      "Shadow-IT / CASB discovery with cloud-app risk scoring and personal-instance detection; a cross-dimension hunt pivots one indicator across every event stream.",
+      "Curated read-only endpoint reference hand-distilled from a 781-path OpenAPI spec, surfaced as conversational slash-command skills."
+    ],
+    "stack": ["Python", "Netskope REST API v2", "Claude Code skills"],
+    "scale": "~800 LOC · live tenant",
+    "principle": "Read-only by construction",
+    "featured": true
+  },
+  {
+    "name": "Netskope Client Log Analyzer",
+    "tagline": "Offline connectivity root-cause engine",
+    "domain": "Endpoint diagnostics · SSE client troubleshooting",
+    "description": "When the Netskope client breaks a user's network, triage means reading thousands of lines of debug log and knowing every failure mode by heart. This offline engine does it instead: point it at a device's log bundle and it extracts client state, matches the logs against a knowledge base of failure signatures, and returns a ranked root-cause verdict plus a reviewable fix — each finding backed by the exact quoted log lines. No tenant credentials needed.",
+    "highlights": [
+      "~13 platform-scoped failure signatures — tunnel down, fail-close blocking, cert-pinning break, captive portal, WFP driver failure, macOS system-extension not approved, CLAT over hotspot, and more.",
+      "Encodes hard-won SSE operational knowledge as reusable, testable rules instead of tribal knowledge; tuned against real captured bundles to kill false positives.",
+      "Single-device and fleet modes, plus a browser-timing sub-tool that reads Chrome net-export logs for per-request DNS / TCP / TLS / TTFB percentiles."
+    ],
+    "stack": ["Python (stdlib)", "log & zip parsing"],
+    "scale": "~740 LOC · offline · zero credentials",
+    "principle": "Offline-first · zero-credential",
+    "featured": false
+  },
+  {
+    "name": "Insider-Threat Investigation Agent",
+    "tagline": "Data-exfiltration triage over Microsoft Sentinel",
+    "domain": "SIEM · insider risk · DLP · incident response",
+    "description": "Insider-threat cases are the most context-heavy a SOC handles — a single subject's activity is scattered across the SIEM, EDR, CASB, identity, DLP, and email. This agent assembles it into a defensible narrative: Microsoft Sentinel is the correlation hub, and it fans out to endpoint, CASB, identity, and mail systems to build a data-movement timeline, scope the exfiltration channel, and produce an evidence-grade report with an exfil score and a verdict recommendation.",
+    "highlights": [
+      "Hub-and-spoke design with cross-domain identity resolution — reconciling a person across multiple corporate identity domains, the hardest part of any real case, is treated as a first-class problem.",
+      "Baseline-aware exfil scoring discounts sanctioned destinations so the score reflects genuinely anomalous movement; motive-triad reasoning frames each case as malicious, compromised, or negligent.",
+      "Every report is read-only and ends “awaiting analyst approval,” with a JSONL audit log for every run."
+    ],
+    "stack": ["Python", "Microsoft Sentinel (KQL)", "Defender for Endpoint", "Netskope", "Entra ID", "Purview"],
+    "scale": "~1,800 LOC · 13 modules · live SIEM",
+    "principle": "Read-only · evidence-grade",
+    "featured": false
+  }
+]

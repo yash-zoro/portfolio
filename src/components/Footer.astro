@@ -1,3 +1,27 @@
-<footer class="text-center py-6 text-sm text-gray-500">
-  © 2026 Yash Kant. Built with Astro.
+---
+const socials = [
+  { href: "https://www.linkedin.com/in/yash-2511-kant/", label: "LinkedIn" },
+  { href: "https://x.com/zorrrrrroooooo", label: "X" },
+  { href: "mailto:yashkant1125@gmail.com", label: "Email" },
+];
+---
+
+<footer class="border-t border-line mt-24">
+  <div class="max-w-5xl mx-auto px-5 sm:px-6 md:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p class="font-mono text-xs text-mut">
+      <span class="text-em">&copy;</span> 2026 Yash Kant &middot; Gurugram, India
+    </p>
+    <div class="flex items-center gap-5 text-xs">
+      {socials.map((s) => (
+        <a
+          href={s.href}
+          target={s.href.startsWith("http") ? "_blank" : undefined}
+          rel={s.href.startsWith("http") ? "noopener noreferrer" : undefined}
+          class="text-mut hover:text-em transition-colors"
+        >
+          {s.label}
+        </a>
+      ))}
+    </div>
+  </div>
 </footer>
