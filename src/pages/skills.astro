@@ -1,15 +1,28 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import skills from '../data/skills.json';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import skills from "../data/skills.json";
 ---
 
-<BaseLayout title="Skills">
-  <section class="px-4 sm:px-6 py-16 text-white">
-    <h1 class="text-3xl sm:text-4xl font-bold mb-10">Skills</h1>
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 stagger-in">
-      {skills.map((skill) => (
-        <div class="bg-gray-800/60 border border-gray-700/50 text-sm px-3 py-2.5 rounded-lg hover:border-neon hover:bg-neon/10 hover:text-neon transition-all duration-200 cursor-default">
-          {skill}
+<BaseLayout title="Skills — Yash Kant">
+  <section class="py-16 text-ink">
+    <p class="mono-label">// toolkit</p>
+    <h1 class="mt-2 text-3xl sm:text-4xl font-bold tracking-tight">Skills</h1>
+    <p class="mt-4 max-w-2xl text-lg text-ink/70 leading-relaxed">
+      The platforms, disciplines, and languages I work in day to day.
+    </p>
+
+    <div class="mt-10 space-y-8">
+      {skills.map((group) => (
+        <div class="reveal">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="mono-label text-em/90">{group.category}</span>
+            <span class="flex-1 h-px bg-line"></span>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            {group.items.map((item) => (
+              <span class="glass glass-hover text-sm text-ink/85 px-3 py-1.5 cursor-default">{item}</span>
+            ))}
+          </div>
         </div>
       ))}
     </div>

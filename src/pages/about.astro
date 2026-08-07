@@ -1,37 +1,96 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import education from "../data/education.json";
+import certifications from "../data/certifications.json";
+
+const focus = [
+  "Endpoint security & hardening",
+  "Detection engineering (KQL)",
+  "SOC & security automation",
+  "Incident response",
+  "Insider-threat investigation",
+  "Netskope SSE / CASB / DLP",
+  "Vulnerability management",
+];
 ---
 
-<BaseLayout title="About">
-  <section class="max-w-3xl mx-auto py-16 px-4 sm:px-6 text-white">
-    <h1 class="text-3xl sm:text-4xl font-bold text-white mb-8">
-      About Me
-    </h1>
+<BaseLayout title="About — Yash Kant">
+  <section class="py-16 max-w-3xl">
+    <p class="mono-label">// about</p>
+    <h1 class="mt-2 text-3xl sm:text-4xl font-bold tracking-tight">About me</h1>
 
-    <div class="space-y-5 text-gray-300 text-lg leading-relaxed stagger-in">
+    <div class="mt-8 space-y-5 text-lg text-ink/80 leading-relaxed stagger-in">
       <p>
-        Hey, I'm <strong class="text-white">Yash</strong>, a Cyber Security professional with a laser focus on <strong class="text-white">Data Leak Prevention (DLP)</strong> and the critical art of protecting data across every touchpoint — whether it's your endpoints, networks, or the cloud. My mission? To stop data theft before they start and ensure your sensitive information stays where it belongs.
+        I'm <strong class="text-ink font-semibold">Yash Kant</strong>. Over four years I've grown from hands-on
+        security analyst to security engineer, working across enterprise endpoint security, security operations,
+        detection engineering, incident response, and automation. Today I own security platforms end-to-end at
+        fleet scale &mdash; across Zomato, Blinkit, Hyperpure, and District.
       </p>
+      <p>
+        My day-to-day is Microsoft Defender and Sentinel (Advanced Hunting with KQL), Intune, WDAC, Jamf, and
+        Netskope &mdash; threat hunting, incident response, insider-threat investigation, and vulnerability
+        management. And when the manual way doesn't scale &mdash; triaging every alert, or removing risky software
+        from thousands of endpoints by hand &mdash; I build the tooling that does. Automation in service of stronger
+        security, not for its own sake.
+      </p>
+      <p>
+        A principle runs through everything I ship: <strong class="text-ink font-semibold">read-only by
+        construction</strong>. My investigation agents read, correlate, and recommend &mdash; they never act on
+        their own. The one write-capable tool is deliberately isolated behind a hard allowlist and dry-run-by-default,
+        so an automation bug can never touch the whole fleet. Separation of privilege isn't bolted on; it's the architecture.
+      </p>
+      <p>
+        I like the problems others walk away from &mdash; insider data-theft cases that span the SIEM, endpoint,
+        CASB, and identity, or client failures that support teams couldn't root-cause. If it's slow, manual, and
+        important, it's a candidate for automation.
+      </p>
+    </div>
 
-      <p>
-        With hands-on expertise in building and deploying robust <strong class="text-white">DLP strategies</strong>, I design tailored solutions that not only safeguard data but also enhance regulatory compliance and streamline security practices across organizations. I don't just implement security solutions — I engineer them to fit your unique needs.
-      </p>
+    <!-- Focus areas -->
+    <div class="mt-10 reveal">
+      <p class="mono-label">// focus areas</p>
+      <div class="mt-3 flex flex-wrap gap-2">
+        {focus.map((f) => (
+          <span class="glass px-3 py-1.5 text-sm text-ink/85">{f}</span>
+        ))}
+      </div>
+    </div>
 
-      <p>
-        Whether it's fortifying firewalls, securing networks, or locking down cloud environments, I bring deep expertise in <strong class="text-white">network security</strong> and <strong class="text-white">cloud defense</strong> to the table. And I'm always ahead of the curve, tracking the latest threats and trends, ensuring your defenses stay one step ahead of the bad actors.
-      </p>
+    <!-- Education + Certifications -->
+    <div class="mt-14 grid sm:grid-cols-2 gap-8 reveal">
+      <div>
+        <p class="mono-label">// education</p>
+        {education.map((edu) => (
+          <div class="mt-3 glass p-5">
+            <h2 class="text-base font-semibold text-ink">{edu.degree}</h2>
+            <p class="mt-1 text-sm text-mut">{edu.school}</p>
+            <p class="mt-1 font-mono text-xs text-em">{edu.start} &ndash; {edu.end}</p>
+          </div>
+        ))}
+      </div>
 
-      <p>
-        I live and breathe cyber security. From designing cutting-edge <strong class="text-white">DLP solutions</strong> to educating teams on best practices, I'm here to make sure your digital landscape is impenetrable.
-      </p>
+      <div>
+        <p class="mono-label">// certifications</p>
+        <div class="mt-3 space-y-3">
+          {certifications.map((c) => (
+            <div class="glass p-4 flex items-start gap-3">
+              <svg class="w-5 h-5 text-em shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+              </svg>
+              <div>
+                <p class="text-sm font-medium text-ink leading-snug">{c.name}</p>
+                <p class="text-xs text-mut">{c.issuer}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
 
-      <p>
-        Ready to take your security to the next level? Let's connect and make it happen.
-      </p>
-
-      <p>
-        Outside work, I like sharing knowledge, exploring places, travelling, and I'm passionate about cars and bikes.
-      </p>
+    <div class="mt-14 reveal">
+      <a href="/contact" class="inline-flex items-center gap-2 px-5 py-2.5 bg-em text-[#05130d] font-semibold rounded-lg text-sm hover:opacity-90 transition-opacity">
+        Get in touch &rarr;
+      </a>
     </div>
   </section>
 </BaseLayout>

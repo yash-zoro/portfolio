@@ -1,22 +1,77 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import projects from "../data/projects.json";
+
+const featured = projects.filter((p) => p.featured);
+
+const disciplines = [
+  "Detection & Response",
+  "Endpoint & Cloud Security",
+  "CASB / SWG / DLP",
+  "Threat Hunting",
+  "Insider Risk",
+];
 ---
 
 <BaseLayout>
-  <section class="flex flex-col items-center justify-center text-center px-4 py-20 sm:py-28 md:py-36 -mx-4 md:-mx-8">
-    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-snug sm:leading-tight animate-in">
-      Hey, I'm <span class="text-neon">Yash</span>,
-    </h1>
-    <p class="mt-4 text-base sm:text-lg md:text-xl text-gray-400 max-w-md sm:max-w-lg animate-in" style="animation-delay: 0.15s;">
-      Geek by day, Gamer by night. Always leveling up in life.
+  <!-- Hero -->
+  <section class="pt-16 sm:pt-24 md:pt-28 pb-14">
+    <p class="mono-label animate-in flex items-center gap-2">
+      <span class="inline-block w-2 h-2 rounded-full bg-em"></span>
+      <span><span class="text-em">yash@infosec</span>:~$ whoami</span>
     </p>
-    <div class="mt-8 flex gap-4 animate-in" style="animation-delay: 0.3s;">
-      <a href="/about" class="px-5 py-2.5 bg-neon text-black font-semibold rounded-md hover:opacity-80 transition-opacity text-sm">
-        About Me
+
+    <h1 class="mt-5 text-4xl sm:text-6xl md:text-7xl font-extrabold leading-[1.02] tracking-tight animate-in" style="animation-delay:.08s">
+      Yash <span class="text-gradient">Kant</span><span class="term-cursor" aria-hidden="true"></span>
+    </h1>
+
+    <p class="mt-5 font-mono text-sm md:text-base tracking-tight text-mut animate-in" style="animation-delay:.16s">
+      <span class="text-em mr-2">&#9656;</span>{disciplines.map((d, i) => (
+        <Fragment>{i > 0 && <span class="mx-1.5 text-mut/50">&middot;</span>}<span>{d}</span></Fragment>
+      ))}
+    </p>
+
+    <p class="mt-6 max-w-2xl text-lg sm:text-xl text-ink/85 leading-relaxed animate-in" style="animation-delay:.24s">
+      I work across enterprise security end-to-end &mdash; endpoint to cloud, identity to data. On any given
+      day that's hunting threats and engineering detections, running incident response and insider-threat
+      investigations, closing vulnerabilities, and hardening the environment against the next attack. When the
+      manual way doesn't scale, I build the tooling that does.
+    </p>
+
+    <div class="mt-9 flex flex-wrap gap-3 animate-in" style="animation-delay:.32s">
+      <a href="/projects" class="px-5 py-2.5 bg-em text-[#05130d] font-semibold rounded-lg text-sm hover:opacity-90 transition-opacity">
+        View my work &rarr;
       </a>
-      <a href="/contact" class="px-5 py-2.5 border border-gray-600 text-gray-300 rounded-md hover:border-neon hover:text-neon transition-all text-sm">
-        Get in Touch
+      <a href="/about" class="px-5 py-2.5 rounded-lg text-sm font-mono text-ink border border-line hover:border-em/60 hover:bg-white/5 transition-all">
+        ./about
       </a>
+      <a href="/contact" class="px-5 py-2.5 rounded-lg text-sm font-mono text-mut border border-line hover:border-em/60 hover:text-em transition-all">
+        ./contact
+      </a>
+    </div>
+  </section>
+
+  <!-- Selected work -->
+  <section class="pb-8 reveal">
+    <div class="flex items-end justify-between gap-4 mb-6">
+      <div>
+        <p class="mono-label">// selected work</p>
+        <h2 class="mt-1 text-2xl sm:text-3xl font-bold tracking-tight">Things I've built</h2>
+      </div>
+      <a href="/projects" class="shrink-0 font-mono text-xs text-mut hover:text-em transition-colors">all &rarr;</a>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {featured.map((p) => (
+        <a href="/projects" class="glass glass-hover p-5 flex flex-col group">
+          <h3 class="text-lg font-semibold text-ink group-hover:text-em transition-colors">{p.name}</h3>
+          <p class="mt-0.5 font-mono text-xs text-mut">{p.tagline}</p>
+          <p class="mt-3 text-sm text-ink/75 leading-relaxed flex-1">{p.description}</p>
+          <p class="mt-4 inline-flex items-center gap-2 text-xs font-mono text-em">
+            <span aria-hidden="true">&#9656;</span> {p.principle}
+          </p>
+        </a>
+      ))}
     </div>
   </section>
 </BaseLayout>

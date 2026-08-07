@@ -1,27 +1,85 @@
 [
-    {
-      "company": "Zomato",
-      "title": "Security Engineer",
-      "location": "Gurugram, Haryana, India",
-      "start": "Apr 2024",
-      "end": "Present",
-      "description": "Leading the deployment and management of the Data Leak Prevention Solution for Zomato, Blinkit, Hyperpure and District. Leading the deployment and management of the MDM Solution for Zomato, Blinkit and Hyperpure. Dark Web monitoring for whole organization data. IT Team management for deploying and managing diff solutions. IT Risk and Compliance management with GRC Team. Cyber Security Awareness Training on org level for Tech and Non-Tech Teams"
-    },
-    {
-      "company": "Frux Technologies",
-      "title": "Cyber Security Solution Consultant",
-      "location": "Delhi, India",
-      "start": "Oct 2023",
-      "end": "Apr 2024",
-      "description": "Performing POCs for DLP and Firewall in customer environment. Creation of information security rules in DLP and Firewalls as per security compliance. Protecting data leakage by creating standard policies. Preparing RFP, RFI and Solution Designs according to different Industry Compliances."
-    },
-    {
-      "company": "Data Resolve Technologies",
-      "title": "Cyber Security Consultant",
-      "location": "Noida, Uttar Pradesh, India",
-      "start": "Aug 2022",
-      "end": "Oct 2023",
-      "description": "Performing POCs for DLP in customer environment. Creation of information security rules in DLP as per security compliance. Protecting data leakage by creating standard policies. Preparing RFP, RFI and Solution Designs according to different Industry Compliances."
-    }
-  ]
-  
+  {
+    "company": "Zomato · Blinkit · Hyperpure · District",
+    "title": "Security Engineer",
+    "location": "Gurugram, India",
+    "start": "May 2024",
+    "end": "Present",
+    "current": true,
+    "summary": "Own enterprise security platforms end-to-end across a fleet of tens of thousands of endpoints — endpoint security, detection engineering, SOC automation, incident response, and compliance.",
+    "groups": [
+      {
+        "label": "Endpoint Security & Fleet Rollouts",
+        "points": [
+          "Led the WDAC application-control rollout across tens of thousands of Windows endpoints — authored policies at the XML level with browser-deny enforcement, validated through staged pilot rings, and shipped to production with zero P0/P1 incidents; delivered in-house after external vendor engagements had stalled.",
+          "Rolled out cross-platform endpoint tooling across the Windows and macOS fleet — Microsoft Defender for Endpoint, Chrome Enterprise, and OSQuery telemetry — establishing SOPs, lifecycle automation, and monitoring where none existed.",
+          "Manage the macOS fleet on Jamf Pro and delivered Scalefusion MDM across the managed-device estate, standing up operations and lifecycle automation from scratch."
+        ]
+      },
+      {
+        "label": "Security Automation & Engineering",
+        "points": [
+          "Built an autonomous-but-advisory SOC analysis engine from scratch — integrating Microsoft Defender for Endpoint APIs, Azure CLI, and Slack to automate alert and incident investigation, device context, fleet-wide CVE scans, and sensor-health audits, cutting average investigation time from roughly 20 minutes to under a minute.",
+          "Engineered a suite of internal security tools — from guardrailed fleet remediation to Netskope investigation and log-analysis agents and an insider-threat SIEM agent (see Projects)."
+        ]
+      },
+      {
+        "label": "Enterprise Security Platforms — Netskope",
+        "points": [
+          "Own Netskope (SSE / CASB / DLP / DEM) end-to-end across the full endpoint fleet — deployment, policy engineering, daily operations, incident investigation, and monthly audits; authored SOPs and built an internal L1 support and escalation capability through engineer training.",
+          "Built two Netskope automation tools — an API-driven incident-investigation agent over the live tenant, and an offline client-log analyzer that root-causes device connectivity failures from client log bundles."
+        ]
+      },
+      {
+        "label": "SecOps, Detection & Incident Response",
+        "points": [
+          "Run threat hunting and detection engineering in Microsoft Defender Advanced Hunting and Microsoft Sentinel — authoring and tuning custom KQL detections that surface additional compromised devices across the fleet.",
+          "Run daily macOS security operations on Jamf Protect and established fleet-wide vulnerability visibility via automated CVE-discovery workflows that correlate the Windows estate against thousands of CVEs and feed prioritized remediation.",
+          "Led investigations across supply-chain compromise, malicious browser-extension token theft, insider data theft, and credential phishing — including a full RCA on thousands of devices that Microsoft and Netskope support could not diagnose, with PowerShell detection and remediation tooling."
+        ]
+      },
+      {
+        "label": "Leadership & Process",
+        "points": [
+          "Established the security quick-response (QRT) investigation process where none existed — SOPs, an internal knowledge base, engineer training, and tooling. Coordinate vendors (Microsoft, Netskope, Jamf, Google, Scalefusion) and partner with the GRC team on IT-risk and compliance governance."
+        ]
+      }
+    ]
+  },
+  {
+    "company": "Frux Technologies",
+    "title": "Cyber Security Solution Consultant",
+    "location": "Delhi, India",
+    "start": "Oct 2023",
+    "end": "Apr 2024",
+    "current": false,
+    "summary": "Consulted enterprise customers on security gaps and designed target solutions across DLP, SSE, EDR / XDR, ZTNA, and network security.",
+    "groups": [
+      {
+        "label": null,
+        "points": [
+          "Led product deployments and proof-of-concepts end-to-end — implementation, integration, and customer enablement — alongside RFP / RFI management and technical workshops.",
+          "Ran security-architecture and networking discussions with prospects, accelerating purchase decisions; administered Linux environments with shell scripting for deployment and automation."
+        ]
+      }
+    ]
+  },
+  {
+    "company": "Data Resolve Technologies",
+    "title": "Cyber Security Consultant",
+    "location": "Noida, India",
+    "start": "Aug 2022",
+    "end": "Sep 2023",
+    "current": false,
+    "summary": "Implemented enterprise DLP solutions and led customer onboarding, Linux deployments, and troubleshooting.",
+    "groups": [
+      {
+        "label": null,
+        "points": [
+          "Managed RFPs, RFIs, and proof-of-concept projects end-to-end, increasing client engagement and conversions.",
+          "Partnered with sales, engineering, and support to shape technical solutions and delivered training that streamlined POC cycles."
+        ]
+      }
+    ]
+  }
+]
